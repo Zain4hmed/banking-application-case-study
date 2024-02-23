@@ -9,6 +9,6 @@ import java.util.List;
 @Service
 public interface TransactionService {
     ResponseDTO createTransaction(Transaction transaction, String trackingId);
-    List<Transaction> getAllTransactions();
-    List<Transaction> getTransactionsByAccountId(String accountId);
+    List<Transaction> getAllTransactions(String trackingId);
+    List<Transaction> getTransactionsByAccountId(String accountId , String trackingId);
 }

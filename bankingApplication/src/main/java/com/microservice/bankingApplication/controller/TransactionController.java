@@ -7,11 +7,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.UUID;
 
 @RestController
@@ -26,8 +24,21 @@ public class TransactionController {
     @PostMapping("/debit")
     public ResponseEntity<ResponseDTO> createTransaction(@RequestBody Transaction transaction){
         String trackingId = UUID.randomUUID().toString();
-        logger.info("Tracking ID : {} , Create Transaction request recieved.",trackingId);
+        logger.info("Tracking ID : {} , Request received to create transaction  received.",trackingId);
         return ResponseEntity.ok().body(transactionService.createTransaction(transaction,trackingId));
     }
 
+    @GetMapping("/all")
+    public ResponseEntity<List<Transaction>> getAllTransactions(){
+        String trackingId = UUID.randomUUID().toString();
+        logger.info("Tracking ID ; {} , Request to get all transactions.",trackingId);
+        return ResponseEntity.ok().body(transactionService.getAllTransactions(trackingId));
+    }
+
+    @GetMapping("/all/{accountId}")
+    public ResponseEntity<List<Transaction>> getAllTransactionsByAccountId(@PathVariable String accountId){
+        String trackingId = UUID.randomUUID().toString();
+        logger.info("Tracking ID ; {} , Request to Get All Transactions by account id :"+accountId,trackingId);
+        return ResponseEntity.ok().body(transactionService.getTransactionsByAccountId(accountId,trackingId));
+    }
 }
