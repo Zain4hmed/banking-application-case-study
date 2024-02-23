@@ -1,5 +1,6 @@
 package com.microservice.bankingApplication.service;
 
+import com.microservice.bankingApplication.DTO.ResponseDTO;
 import com.microservice.bankingApplication.entity.Transaction;
 import com.microservice.bankingApplication.repository.TransactionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,9 +16,18 @@ public class ServiceImpl implements TransactionService {
     private TransactionRepository transactionRepository;
 
     @Override
-    public Transaction createTransaction(Transaction transaction) {
+    public ResponseDTO createTransaction(Transaction transaction, String trackingId) {
         transaction.setTransactionId(UUID.randomUUID().toString());
-        return transactionRepository.save(transaction);
+        transactionRepository.save(transaction);
+
+        return new ResponseDTO(
+                trackingId,
+                transaction.getTransactionId(),
+                transaction.getSenderAccountId(),
+                transaction.getRecipientAccountId(),
+                transaction.getTransactionType(),
+                transaction.getTransactionAmount()
+        );
     }
 
     @Override
