@@ -3,6 +3,7 @@ package com.microservice.bankingApplication.service;
 import com.microservice.bankingApplication.DTO.ResponseDTO;
 import com.microservice.bankingApplication.entity.Transaction;
 import com.microservice.bankingApplication.repository.TransactionRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.UUID;
 
+@Slf4j
 @Service
 public class ServiceImpl implements TransactionService {
 
@@ -24,7 +26,7 @@ public class ServiceImpl implements TransactionService {
 
         transaction.setTransactionId(UUID.randomUUID().toString());
         transactionRepository.save(transaction);
-        logger.info("Tracking ID : {} , Transaction Created , "+transaction,trackingId);
+        logger.info("Tracking ID : {} , Transaction Created {} ",trackingId,transaction);
 
         return new ResponseDTO(
                 trackingId,
@@ -45,7 +47,7 @@ public class ServiceImpl implements TransactionService {
 
     @Override
     public List<Transaction> getTransactionsByAccountId(String accountId , String trackingId) {
-        logger.info("Tracking ID : {} , Diaplaying all transactions for accoung id :"+accountId,trackingId);
+        logger.info("Tracking ID : {} , Displaying all transactions for account id :{}",trackingId,accountId);
         return transactionRepository.findBySenderAccountId(accountId);
     }
 }
