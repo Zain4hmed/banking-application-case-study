@@ -39,35 +39,35 @@ public class CustomerRegistrationController {
     @GetMapping("/{id}")
     public ResponseEntity<Customer> getCustomerById(@PathVariable String id){
         String trackingId = UUID.randomUUID().toString();
-        log.info("Tracking Id :{} request to create new customer",trackingId);
+        log.info("Tracking Id :{} request to get customer by customer Id :{}",trackingId,id);
         return ResponseEntity.ok().body(customerService.getCustomerById(id));
     }
 
     @GetMapping("/byusername/{username}")
     public ResponseEntity<Customer> getCustomerByUsername(@PathVariable String username) {
         String trackingId = UUID.randomUUID().toString();
-        log.info("Tracking Id :{} request to create new customer",trackingId);
+        log.info("Tracking Id :{} request to get customer by username :{}",trackingId,username);
         return ResponseEntity.ok().body(customerService.getByUsername(username));
     }
 
     @GetMapping("/all")
     public ResponseEntity<List<Customer>> getAllCustomers(){
         String trackingId = UUID.randomUUID().toString();
-        log.info("Tracking Id :{} request to create new customer",trackingId);
+        log.info("Tracking Id :{} request to get all customers from DB",trackingId);
         return ResponseEntity.ok().body(customerService.getAllCustomers());
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<Customer> updateCustomerById(@PathVariable String id , @RequestBody Customer customer){
         String trackingId = UUID.randomUUID().toString();
-        log.info("Tracking Id :{} request to create new customer",trackingId);
+        log.info("Tracking Id :{} request to update customer by customer Id :{}",trackingId,id);
         return ResponseEntity.ok().body(customerService.updateCustomerById(id, customer));
     }
 
     @DeleteMapping("/{id}")
     public void deleteCustomerById(@PathVariable String id){
         String trackingId = UUID.randomUUID().toString();
-        log.info("Tracking Id :{} request to create new customer",trackingId);
+        log.info("Tracking Id :{} request to delete customer by customer Id :{}",trackingId,id);
         customerService.deleteCustomerById(id);
     }
 
