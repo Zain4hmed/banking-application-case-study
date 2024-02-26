@@ -1,24 +1,24 @@
 package com.microservice.customer.service.controller;
 
-import java.util.List;
-import java.util.UUID;
-
-import com.microservice.customer.service.entity.Customer;
-import com.microservice.customer.service.service.CustomerService;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.http.ResponseEntity;
+
+import com.microservice.customer.service.service.CustomerService;
+import com.microservice.customer.service.entity.Customer;
+
+import org.slf4j.LoggerFactory;
+import org.slf4j.Logger;
+
+import java.util.List;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/customers")
@@ -74,7 +74,7 @@ public class CustomerRegistrationController {
     @GetMapping("/createaccount/{customerId}")
     public String toggleAccountCreatedBoolean(@PathVariable String customerId) {
         String trackingId = UUID.randomUUID().toString();
-        log.info("Tracking Id :{} request to create new customer",trackingId);
+        log.info("Tracking Id :{} request to deLink account by customer Id :{}",trackingId,customerId);
         return customerService.toggleAccountCreationBoolean(customerId);
     }
 }
