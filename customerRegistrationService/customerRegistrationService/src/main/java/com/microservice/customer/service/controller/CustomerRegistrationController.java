@@ -58,9 +58,4 @@ public class CustomerRegistrationController {
     public String toggleAccountCreatedBoolean(@PathVariable String customerId) {
         return customerService.toggleAccountCreationBoolean(customerId);
     }
-
-    @GetMapping("/login")
-    public ResponseEntity<Customer> login(@RequestParam String id ,@RequestParam String password ) {
-        return ResponseEntity.ok().body(customerService.login(id, password));
-    }
 }

@@ -14,5 +14,4 @@ public interface CustomerService {
     void deleteCustomerById(String id);
     String toggleAccountCreationBoolean(String customerId);
     Customer getByUsername(String username);
-    Customer login(String id , String password);
 }
