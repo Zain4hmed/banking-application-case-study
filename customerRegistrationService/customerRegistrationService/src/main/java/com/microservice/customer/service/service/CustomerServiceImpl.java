@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.UUID;
 
 import com.microservice.customer.service.configurations.BCryptPasswordEncoder;
-import com.microservice.customer.service.entity.Account;
 import com.microservice.customer.service.entity.Customer;
 import com.microservice.customer.service.exceptions.RegistrationUnsuccessfullException;
 import com.microservice.customer.service.exceptions.ResourceNotFoundException;
@@ -19,8 +18,6 @@ import org.springframework.web.client.RestTemplate;
 @Service
 public class CustomerServiceImpl implements CustomerService {
 
-    Logger log = LoggerFactory.getLogger(CustomerServiceImpl.class);
-
     @Autowired
     private CustomerRepository customerRegistrationRepository;
 
@@ -30,6 +27,7 @@ public class CustomerServiceImpl implements CustomerService {
     @Autowired
     private RestTemplate restTemplate;
 
+    Logger log = LoggerFactory.getLogger(CustomerServiceImpl.class);
 
     @Override
     public Customer addCustomer(Customer customer) {
@@ -47,8 +45,7 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public Customer getCustomerById(String id) {
-        return customerRegistrationRepository.findById(id).orElseThrow(
-                () -> new ResourceNotFoundException());
+        return customerRegistrationRepository.findById(id).orElseThrow(ResourceNotFoundException::new);
     }
 
     @Override
@@ -58,8 +55,8 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public Customer updateCustomerById(String id , Customer customer) {
-        Customer updatedCustomer = customerRegistrationRepository.findById(id).orElseThrow(
-                () -> new ResourceNotFoundException() );
+        Customer updatedCustomer = customerRegistrationRepository
+                .findById(id).orElseThrow(ResourceNotFoundException::new);
 
         updatedCustomer.setName(customer.getName());
         updatedCustomer.setAge(customer.getAge());
@@ -68,6 +65,7 @@ public class CustomerServiceImpl implements CustomerService {
         updatedCustomer.setSalary(customer.getSalary());
         updatedCustomer.setGender(customer.getGender());
         updatedCustomer.setPassword(customer.getPassword());
+        
         return customerRegistrationRepository.save(updatedCustomer);
     }
 
@@ -96,8 +94,7 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public Customer login(String id, String password) {
-        Customer customer = customerRegistrationRepository.findById(id).orElseThrow(
-                () -> new ResourceNotFoundException());
+        Customer customer = customerRegistrationRepository.findById(id).orElseThrow(ResourceNotFoundException::new);
         log.info("fromt he db the customer : "+customer);
 //		if(customer != null || customer.getPassword().toString() != password) {
 //			throw new ResourceNotFoundException(" The id or password is incorrect please retry later");
