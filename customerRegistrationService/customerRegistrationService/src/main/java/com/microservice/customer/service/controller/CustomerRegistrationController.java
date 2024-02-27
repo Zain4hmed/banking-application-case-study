@@ -43,18 +43,18 @@ public class CustomerRegistrationController {
         return ResponseEntity.ok().body(customerService.getCustomerById(id,trackingId));
     }
 
-    @GetMapping("/byusername/{username}")
+    @GetMapping("/username/{username}")
     public ResponseEntity<Customer> getCustomerByUsername(@PathVariable String username) {
         String trackingId = UUID.randomUUID().toString();
         log.info("Tracking Id :{} request to get customer by username :{}",trackingId,username);
-        return ResponseEntity.ok().body(customerService.getByUsername(username));
+        return ResponseEntity.ok().body(customerService.getByUsername(username,trackingId));
     }
 
     @GetMapping("/all")
     public ResponseEntity<List<Customer>> getAllCustomers(){
         String trackingId = UUID.randomUUID().toString();
         log.info("Tracking Id :{} request to get all customers from DB",trackingId);
-        return ResponseEntity.ok().body(customerService.getAllCustomers());
+        return ResponseEntity.ok().body(customerService.getAllCustomers(trackingId));
     }
 
     @PutMapping("/{id}")

@@ -56,7 +56,8 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public List<Customer> getAllCustomers() {
+    public List<Customer> getAllCustomers(String trackingId) {
+        log.info("Tracking Id: {} - fetching all the customer from DB", trackingId);
         return customerRegistrationRepository.findAll();
     }
 
@@ -81,7 +82,8 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public Customer getByUsername(String username) {
+    public Customer getByUsername(String username , String trackingId) {
+        log.info("Tracking Id: {} - fetching customer for it's username :{}", trackingId,username);
         return customerRegistrationRepository.findByUsername(username);
     }
 }

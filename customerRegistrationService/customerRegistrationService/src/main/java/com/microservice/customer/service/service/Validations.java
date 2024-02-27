@@ -16,7 +16,7 @@ public class Validations {
     @Autowired
     private static CustomerRepository customerRepository;
 
-    private static Logger log = LoggerFactory.getLogger(Validations.class);
+    private static final Logger log = LoggerFactory.getLogger(Validations.class);
 
     public static String validateCustomer(Customer customer , String trackingId) {
 
@@ -113,6 +113,6 @@ public class Validations {
     }
 
     public static boolean passwordReEntryMatch(String password , String confirmPassword) {
-        return password != null && confirmPassword != null && password.equals(confirmPassword);
+        return password != null && password.equals(confirmPassword);
     }
 }
