@@ -286,3 +286,5 @@ Started CustomerRegistrationServiceApplication in 7.794 seconds (process running
 Initializing Spring DispatcherServlet 'dispatcherServlet'
 Initializing Servlet 'dispatcherServlet'
 Completed initialization in 3 ms
+Tracking Id :a27bf546-4612-4a93-9cc5-8cdb50e9f8f5 request to get all customers from DB
+Tracking Id: a27bf546-4612-4a93-9cc5-8cdb50e9f8f5 - fetching all the customer from DB
