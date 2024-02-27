@@ -1,0 +1,288 @@
+Starting CustomerRegistrationServiceApplication using Java 17.0.10 with PID 18408 (C:\Users\zaina\banking-application-case-study\customerRegistrationService\customerRegistrationService\target\classes started by zaina in C:\Users\zaina\banking-application-case-study\customerRegistrationService\customerRegistrationService)
+No active profile set, falling back to 1 default profile: "default"
+Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+Finished Spring Data repository scanning in 120 ms. Found 1 JPA repository interface.
+Tomcat initialized with port 8080 (http)
+Starting service [Tomcat]
+Starting Servlet engine: [Apache Tomcat/10.1.19]
+Initializing Spring embedded WebApplicationContext
+Root WebApplicationContext: initialization completed in 3261 ms
+HHH000204: Processing PersistenceUnitInfo [name: default]
+HHH000412: Hibernate ORM core version 6.4.4.Final
+HHH000026: Second-level cache disabled
+No LoadTimeWeaver setup: ignoring JPA class transformer
+HikariPool-1 - Starting...
+HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@2df4b313
+HikariPool-1 - Start completed.
+HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+Initialized JPA EntityManagerFactory for persistence unit 'default'
+Autowired annotation is not supported on static fields: private static com.microservice.customer.service.repository.CustomerRepository com.microservice.customer.service.service.Validations.customerRepository
+Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'customerRegistrationController': Unsatisfied dependency expressed through field 'customerService': Error creating bean with name 'customerServiceImpl': Unsatisfied dependency expressed through field 'restTemplate': No qualifying bean of type 'org.springframework.web.client.RestTemplate' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+Closing JPA EntityManagerFactory for persistence unit 'default'
+HikariPool-1 - Shutdown initiated...
+HikariPool-1 - Shutdown completed.
+Stopping service [Tomcat]
+
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Field restTemplate in com.microservice.customer.service.service.CustomerServiceImpl required a bean of type 'org.springframework.web.client.RestTemplate' that could not be found.
+
+The injection point has the following annotations:
+	- @org.springframework.beans.factory.annotation.Autowired(required=true)
+
+
+Action:
+
+Consider defining a bean of type 'org.springframework.web.client.RestTemplate' in your configuration.
+
+Starting CustomerRegistrationServiceApplication using Java 17.0.10 with PID 16024 (C:\Users\zaina\banking-application-case-study\customerRegistrationService\customerRegistrationService\target\classes started by zaina in C:\Users\zaina\banking-application-case-study\customerRegistrationService\customerRegistrationService)
+No active profile set, falling back to 1 default profile: "default"
+Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+Finished Spring Data repository scanning in 112 ms. Found 1 JPA repository interface.
+Tomcat initialized with port 8080 (http)
+Starting service [Tomcat]
+Starting Servlet engine: [Apache Tomcat/10.1.19]
+Initializing Spring embedded WebApplicationContext
+Root WebApplicationContext: initialization completed in 2879 ms
+HHH000204: Processing PersistenceUnitInfo [name: default]
+HHH000412: Hibernate ORM core version 6.4.4.Final
+HHH000026: Second-level cache disabled
+No LoadTimeWeaver setup: ignoring JPA class transformer
+HikariPool-1 - Starting...
+HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@4e9f05d1
+HikariPool-1 - Start completed.
+HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+Initialized JPA EntityManagerFactory for persistence unit 'default'
+Autowired annotation is not supported on static fields: private static com.microservice.customer.service.repository.CustomerRepository com.microservice.customer.service.service.Validations.customerRepository
+spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+LiveReload server is running on port 35729
+Tomcat started on port 8080 (http) with context path ''
+Started CustomerRegistrationServiceApplication in 8.17 seconds (process running for 8.976)
+Initializing Spring DispatcherServlet 'dispatcherServlet'
+Initializing Servlet 'dispatcherServlet'
+Completed initialization in 0 ms
+Tracking Id :210aeaf9-34ba-4dd0-ad1b-af790e890c25 request to get all customers from DB
+Tracking Id: 210aeaf9-34ba-4dd0-ad1b-af790e890c25 - fetching all the customer from DB
+Closing JPA EntityManagerFactory for persistence unit 'default'
+HikariPool-1 - Shutdown initiated...
+HikariPool-1 - Shutdown completed.
+Starting CustomerRegistrationServiceApplication using Java 17.0.10 with PID 19128 (C:\Users\zaina\banking-application-case-study\customerRegistrationService\customerRegistrationService\target\classes started by zaina in C:\Users\zaina\banking-application-case-study\customerRegistrationService\customerRegistrationService)
+No active profile set, falling back to 1 default profile: "default"
+Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+Finished Spring Data repository scanning in 117 ms. Found 1 JPA repository interface.
+Tomcat initialized with port 8080 (http)
+Starting service [Tomcat]
+Starting Servlet engine: [Apache Tomcat/10.1.19]
+Initializing Spring embedded WebApplicationContext
+Root WebApplicationContext: initialization completed in 2836 ms
+HHH000204: Processing PersistenceUnitInfo [name: default]
+HHH000412: Hibernate ORM core version 6.4.4.Final
+HHH000026: Second-level cache disabled
+No LoadTimeWeaver setup: ignoring JPA class transformer
+HikariPool-1 - Starting...
+HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@536f235e
+HikariPool-1 - Start completed.
+HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+Initialized JPA EntityManagerFactory for persistence unit 'default'
+Autowired annotation is not supported on static fields: private static com.microservice.customer.service.repository.CustomerRepository com.microservice.customer.service.service.Validations.customerRepository
+spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+LiveReload server is running on port 35729
+Tomcat started on port 8080 (http) with context path ''
+Started CustomerRegistrationServiceApplication in 7.946 seconds (process running for 8.741)
+Initializing Spring DispatcherServlet 'dispatcherServlet'
+Initializing Servlet 'dispatcherServlet'
+Completed initialization in 1 ms
+Resolved [org.springframework.web.bind.MissingPathVariableException: Required URI template variable 'id' for method parameter type String is not present]
+Closing JPA EntityManagerFactory for persistence unit 'default'
+HikariPool-1 - Shutdown initiated...
+HikariPool-1 - Shutdown completed.
+Starting CustomerRegistrationServiceApplication using Java 17.0.10 with PID 6080 (C:\Users\zaina\banking-application-case-study\customerRegistrationService\customerRegistrationService\target\classes started by zaina in C:\Users\zaina\banking-application-case-study\customerRegistrationService\customerRegistrationService)
+No active profile set, falling back to 1 default profile: "default"
+Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+Finished Spring Data repository scanning in 107 ms. Found 1 JPA repository interface.
+Tomcat initialized with port 8080 (http)
+Starting service [Tomcat]
+Starting Servlet engine: [Apache Tomcat/10.1.19]
+Initializing Spring embedded WebApplicationContext
+Root WebApplicationContext: initialization completed in 2906 ms
+HHH000204: Processing PersistenceUnitInfo [name: default]
+HHH000412: Hibernate ORM core version 6.4.4.Final
+HHH000026: Second-level cache disabled
+No LoadTimeWeaver setup: ignoring JPA class transformer
+HikariPool-1 - Starting...
+HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@79c04854
+HikariPool-1 - Start completed.
+HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+Initialized JPA EntityManagerFactory for persistence unit 'default'
+Autowired annotation is not supported on static fields: private static com.microservice.customer.service.repository.CustomerRepository com.microservice.customer.service.service.Validations.customerRepository
+spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+LiveReload server is running on port 35729
+Tomcat started on port 8080 (http) with context path ''
+Started CustomerRegistrationServiceApplication in 8.372 seconds (process running for 9.307)
+Initializing Spring DispatcherServlet 'dispatcherServlet'
+Initializing Servlet 'dispatcherServlet'
+Completed initialization in 1 ms
+Resolved [org.springframework.web.bind.MissingPathVariableException: Required URI template variable 'id' for method parameter type String is not present]
+Resolved [org.springframework.web.bind.MissingPathVariableException: Required URI template variable 'id' for method parameter type String is not present]
+Resolved [org.springframework.web.bind.MissingPathVariableException: Required URI template variable 'id' for method parameter type String is not present]
+Resolved [org.springframework.web.bind.MissingPathVariableException: Required URI template variable 'id' for method parameter type String is not present]
+Resolved [org.springframework.web.bind.MissingPathVariableException: Required URI template variable 'id' for method parameter type String is not present]
+Resolved [org.springframework.web.bind.MissingPathVariableException: Required URI template variable 'id' for method parameter type String is not present]
+Resolved [org.springframework.web.bind.MissingPathVariableException: Required URI template variable 'id' for method parameter type String is not present]
+Closing JPA EntityManagerFactory for persistence unit 'default'
+HikariPool-1 - Shutdown initiated...
+HikariPool-1 - Shutdown completed.
+Starting CustomerRegistrationServiceApplication using Java 17.0.10 with PID 14508 (C:\Users\zaina\banking-application-case-study\customerRegistrationService\customerRegistrationService\target\classes started by zaina in C:\Users\zaina\banking-application-case-study\customerRegistrationService\customerRegistrationService)
+No active profile set, falling back to 1 default profile: "default"
+Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+Finished Spring Data repository scanning in 114 ms. Found 1 JPA repository interface.
+Tomcat initialized with port 8080 (http)
+Starting service [Tomcat]
+Starting Servlet engine: [Apache Tomcat/10.1.19]
+Initializing Spring embedded WebApplicationContext
+Root WebApplicationContext: initialization completed in 2860 ms
+HHH000204: Processing PersistenceUnitInfo [name: default]
+HHH000412: Hibernate ORM core version 6.4.4.Final
+HHH000026: Second-level cache disabled
+No LoadTimeWeaver setup: ignoring JPA class transformer
+HikariPool-1 - Starting...
+HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@411a6b02
+HikariPool-1 - Start completed.
+HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+Initialized JPA EntityManagerFactory for persistence unit 'default'
+Autowired annotation is not supported on static fields: private static com.microservice.customer.service.repository.CustomerRepository com.microservice.customer.service.service.Validations.customerRepository
+spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+LiveReload server is running on port 35729
+Tomcat started on port 8080 (http) with context path ''
+Started CustomerRegistrationServiceApplication in 7.705 seconds (process running for 8.485)
+Initializing Spring DispatcherServlet 'dispatcherServlet'
+Initializing Servlet 'dispatcherServlet'
+Completed initialization in 1 ms
+Resolved [org.springframework.web.bind.MissingPathVariableException: Required URI template variable 'id' for method parameter type String is not present]
+Closing JPA EntityManagerFactory for persistence unit 'default'
+HikariPool-1 - Shutdown initiated...
+HikariPool-1 - Shutdown completed.
+Starting CustomerRegistrationServiceApplication using Java 17.0.10 with PID 16304 (C:\Users\zaina\banking-application-case-study\customerRegistrationService\customerRegistrationService\target\classes started by zaina in C:\Users\zaina\banking-application-case-study\customerRegistrationService\customerRegistrationService)
+No active profile set, falling back to 1 default profile: "default"
+Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+Finished Spring Data repository scanning in 114 ms. Found 1 JPA repository interface.
+Tomcat initialized with port 8080 (http)
+Starting service [Tomcat]
+Starting Servlet engine: [Apache Tomcat/10.1.19]
+Initializing Spring embedded WebApplicationContext
+Root WebApplicationContext: initialization completed in 2810 ms
+HHH000204: Processing PersistenceUnitInfo [name: default]
+HHH000412: Hibernate ORM core version 6.4.4.Final
+HHH000026: Second-level cache disabled
+No LoadTimeWeaver setup: ignoring JPA class transformer
+HikariPool-1 - Starting...
+HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@1ce0a1c3
+HikariPool-1 - Start completed.
+HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+Initialized JPA EntityManagerFactory for persistence unit 'default'
+Autowired annotation is not supported on static fields: private static com.microservice.customer.service.repository.CustomerRepository com.microservice.customer.service.service.Validations.customerRepository
+spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+LiveReload server is running on port 35729
+Tomcat started on port 8080 (http) with context path ''
+Started CustomerRegistrationServiceApplication in 7.794 seconds (process running for 8.611)
+Initializing Spring DispatcherServlet 'dispatcherServlet'
+Initializing Servlet 'dispatcherServlet'
+Completed initialization in 1 ms
+Closing JPA EntityManagerFactory for persistence unit 'default'
+HikariPool-1 - Shutdown initiated...
+HikariPool-1 - Shutdown completed.
+Starting CustomerRegistrationServiceApplication using Java 17.0.10 with PID 8484 (C:\Users\zaina\banking-application-case-study\customerRegistrationService\customerRegistrationService\target\classes started by zaina in C:\Users\zaina\banking-application-case-study\customerRegistrationService\customerRegistrationService)
+No active profile set, falling back to 1 default profile: "default"
+Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+Finished Spring Data repository scanning in 124 ms. Found 1 JPA repository interface.
+Tomcat initialized with port 8080 (http)
+Starting service [Tomcat]
+Starting Servlet engine: [Apache Tomcat/10.1.19]
+Initializing Spring embedded WebApplicationContext
+Root WebApplicationContext: initialization completed in 2999 ms
+HHH000204: Processing PersistenceUnitInfo [name: default]
+HHH000412: Hibernate ORM core version 6.4.4.Final
+HHH000026: Second-level cache disabled
+No LoadTimeWeaver setup: ignoring JPA class transformer
+HikariPool-1 - Starting...
+HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@1f6a31b3
+HikariPool-1 - Start completed.
+HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+Initialized JPA EntityManagerFactory for persistence unit 'default'
+Autowired annotation is not supported on static fields: private static com.microservice.customer.service.repository.CustomerRepository com.microservice.customer.service.service.Validations.customerRepository
+spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+LiveReload server is running on port 35729
+Tomcat started on port 8080 (http) with context path ''
+Started CustomerRegistrationServiceApplication in 7.976 seconds (process running for 8.827)
+Initializing Spring DispatcherServlet 'dispatcherServlet'
+Initializing Servlet 'dispatcherServlet'
+Completed initialization in 1 ms
+Closing JPA EntityManagerFactory for persistence unit 'default'
+HikariPool-1 - Shutdown initiated...
+HikariPool-1 - Shutdown completed.
+Starting CustomerRegistrationServiceApplication using Java 17.0.10 with PID 13976 (C:\Users\zaina\banking-application-case-study\customerRegistrationService\customerRegistrationService\target\classes started by zaina in C:\Users\zaina\banking-application-case-study\customerRegistrationService\customerRegistrationService)
+No active profile set, falling back to 1 default profile: "default"
+Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+Finished Spring Data repository scanning in 112 ms. Found 1 JPA repository interface.
+Tomcat initialized with port 8080 (http)
+Starting service [Tomcat]
+Starting Servlet engine: [Apache Tomcat/10.1.19]
+Initializing Spring embedded WebApplicationContext
+Root WebApplicationContext: initialization completed in 2939 ms
+HHH000204: Processing PersistenceUnitInfo [name: default]
+HHH000412: Hibernate ORM core version 6.4.4.Final
+HHH000026: Second-level cache disabled
+No LoadTimeWeaver setup: ignoring JPA class transformer
+HikariPool-1 - Starting...
+HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@1a35ca2f
+HikariPool-1 - Start completed.
+HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+Initialized JPA EntityManagerFactory for persistence unit 'default'
+Autowired annotation is not supported on static fields: private static com.microservice.customer.service.repository.CustomerRepository com.microservice.customer.service.service.Validations.customerRepository
+spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+LiveReload server is running on port 35729
+Tomcat started on port 8080 (http) with context path ''
+Started CustomerRegistrationServiceApplication in 7.794 seconds (process running for 8.583)
+Initializing Spring DispatcherServlet 'dispatcherServlet'
+Initializing Servlet 'dispatcherServlet'
+Completed initialization in 3 ms

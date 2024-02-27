@@ -1,6 +1,11 @@
 package com.microservice.customer.service.controller;
 
+import com.google.zxing.BarcodeFormat;
+import com.google.zxing.WriterException;
+import com.google.zxing.common.BitMatrix;
+import com.google.zxing.qrcode.QRCodeWriter;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -17,6 +22,11 @@ import com.microservice.customer.service.entity.Customer;
 import org.slf4j.LoggerFactory;
 import org.slf4j.Logger;
 
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
 
@@ -28,6 +38,8 @@ public class CustomerRegistrationController {
     private CustomerService customerService;
 
     Logger log = LoggerFactory.getLogger(CustomerService.class);
+
+    private static final String GITHUB_URL = "https://github.com/ZainAhmed08/banking-application-case-study";
 
     @PostMapping("/register")
     public ResponseEntity<Customer> registerCustomer(@RequestBody Customer customer){
@@ -69,5 +81,51 @@ public class CustomerRegistrationController {
         String trackingId = UUID.randomUUID().toString();
         log.info("Tracking Id :{} request to delete customer by customer Id :{}",trackingId,id);
         customerService.deleteCustomerById(id);
+    }
+
+    @GetMapping(value = "/qrcode", produces = MediaType.IMAGE_PNG_VALUE)
+    public ResponseEntity<byte[]> generateQRCode() {
+        try {
+            // Generate QR code
+            QRCodeWriter qrCodeWriter = new QRCodeWriter();
+            BitMatrix bitMatrix = qrCodeWriter.encode(GITHUB_URL, BarcodeFormat.QR_CODE, 200, 200);
+
+            // Convert QR code to byte array
+            ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+            ImageIO.write(bitMatrixToImage(bitMatrix), "png", byteArrayOutputStream);
+            byte[] imageData = byteArrayOutputStream.toByteArray();
+
+            // Return QR code image
+            return ResponseEntity.ok().contentType(MediaType.IMAGE_PNG).body(imageData);
+        } catch (WriterException | IOException e) {
+            e.printStackTrace();
+            return ResponseEntity.badRequest().build();
+        }
+    }
+
+    private static BufferedImage bitMatrixToImage(BitMatrix matrix) {
+        int width = matrix.getWidth();
+        int height = matrix.getHeight();
+        BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
+        for (int x = 0; x < width; x++) {
+            for (int y = 0; y < height; y++) {
+                image.setRGB(x, y, matrix.get(x, y) ? 0xFF000000 : 0xFFFFFFFF);
+            }
+        }
+        return image;
+    }
+
+    @GetMapping()
+    public ResponseEntity<List<String>> exposeAllEndpoints(){
+        List<String> customerServiceEndpoints = Arrays.asList(
+                "GET    http://localhost:8080/api/customers/qrcode",
+                "POST   http://localhost:8080/api/customers/register",
+                "GET    http://localhost:8080/api/customers/{id}",
+                "GET    http://localhost:8080/api/customers/username/{username}",
+                "GET    http://localhost:8080/api/customers/all",
+                "PUT    http://localhost:8080/api/customers/{id}",
+                "DELETE http://localhost:8080/api/customers/{id}"
+        );
+        return ResponseEntity.ok().body(customerServiceEndpoints);
     }
 }

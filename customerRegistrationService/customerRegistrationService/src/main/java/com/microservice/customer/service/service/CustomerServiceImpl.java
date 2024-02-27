@@ -25,8 +25,8 @@ public class CustomerServiceImpl implements CustomerService {
     @Autowired
     private Validations validations;
 
-    @Autowired
-    private RestTemplate restTemplate;
+//    @Autowired
+//    private RestTemplate restTemplate;
 
     Logger log = LoggerFactory.getLogger(CustomerServiceImpl.class);
 
