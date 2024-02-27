@@ -33,14 +33,14 @@ public class CustomerRegistrationController {
     public ResponseEntity<Customer> registerCustomer(@RequestBody Customer customer){
         String trackingId = UUID.randomUUID().toString();
         log.info("Tracking Id :{} request to create new customer",trackingId);
-        return ResponseEntity.ok().body(customerService.addCustomer(customer));
+        return ResponseEntity.ok().body(customerService.addCustomer(customer , trackingId));
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<Customer> getCustomerById(@PathVariable String id){
         String trackingId = UUID.randomUUID().toString();
         log.info("Tracking Id :{} request to get customer by customer Id :{}",trackingId,id);
-        return ResponseEntity.ok().body(customerService.getCustomerById(id));
+        return ResponseEntity.ok().body(customerService.getCustomerById(id,trackingId));
     }
 
     @GetMapping("/byusername/{username}")
@@ -69,12 +69,5 @@ public class CustomerRegistrationController {
         String trackingId = UUID.randomUUID().toString();
         log.info("Tracking Id :{} request to delete customer by customer Id :{}",trackingId,id);
         customerService.deleteCustomerById(id);
-    }
-
-    @GetMapping("/createaccount/{customerId}")
-    public String toggleAccountCreatedBoolean(@PathVariable String customerId) {
-        String trackingId = UUID.randomUUID().toString();
-        log.info("Tracking Id :{} request to deLink account by customer Id :{}",trackingId,customerId);
-        return customerService.toggleAccountCreationBoolean(customerId);
     }
 }

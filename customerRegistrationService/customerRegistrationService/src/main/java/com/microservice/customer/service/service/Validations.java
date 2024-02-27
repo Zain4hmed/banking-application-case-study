@@ -1,54 +1,76 @@
 package com.microservice.customer.service.service;
 
 import com.microservice.customer.service.entity.Customer;
+import com.microservice.customer.service.repository.CustomerRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Component
 public class Validations {
 
-    public static String validateCustomer(Customer customer) {
+    @Autowired
+    private static CustomerRepository customerRepository;
+
+    private static Logger log = LoggerFactory.getLogger(Validations.class);
+
+    public static String validateCustomer(Customer customer , String trackingId) {
+
+        log.info("Tracking Id: {} - Validating customer data", trackingId);
+
         boolean validationCheck = true;
         String exceptionMessage = "";
+
         if(!isValidName(customer.getName())){
             validationCheck = false;
-            exceptionMessage += "name must not be null and should be between 10 and 100 characters long \r\n ";
+            exceptionMessage += "name must not be null and should be between 10 and 100 characters long | ";
         }
         if(!isValidAge(customer.getAge())) {
             validationCheck = false;
-            exceptionMessage += "age must be grater than 18 \r\n " ;
+            exceptionMessage += "age must be grater than 18 | " ;
         }
         if(!isValidEmail(customer.getEmail())) {
             validationCheck = false;
-            exceptionMessage += "email should be in valid format \r\n ";
+            exceptionMessage += "email should be in valid format | ";
         }
         if(!isValidMobileNumber(customer.getMobileNumber())) {
             validationCheck = false;
-            exceptionMessage += "mobile number should be numeric and 10 digits long \r\n ";
+            exceptionMessage += "mobile number should be numeric and 10 digits long | ";
         }
         if(!isValidSalary(customer.getSalary())) {
             validationCheck = false;
-            exceptionMessage += "salary should be numeric and grater than 0 \r\n ";
+            exceptionMessage += "salary should be numeric and grater than 0 | ";
         }
         if(!isValidGender(customer.getGender())) {
             validationCheck = false;
-            exceptionMessage += "gender should be either Male or Female \r\n ";
+            exceptionMessage += "gender should be either Male or Female | ";
         }
-        if(!isValidUserName(customer.getUsername())) {
+        if(!isValidUserNameLength(customer.getUsername())) {
             validationCheck = false;
-            exceptionMessage += "username should not be null and should be between 8 and 15 characters long \r\n ";
+            exceptionMessage += "username should not be null and should be between 8 and 15 characters long | ";
+        }
+        if(!isUniqueUsername(customer.getUsername())){
+            validationCheck = false;
+            exceptionMessage += "username already exists please try with a different username | ";
         }
         if(!isValidPassword(customer.getPassword())) {
             validationCheck = false;
-            exceptionMessage += "password should not be null and should be between 8 and 15 characters long \r\n ";
+            exceptionMessage += "password should not be null and should be between 8 and 15 characters long | ";
         }
         if(!passwordReEntryMatch(customer.getPassword(),customer.getConfirmPassword())) {
             validationCheck = false;
-            exceptionMessage += "pasword and confirm password must match \r\n ";
+            exceptionMessage += "password and confirm password must match | ";
         }
 
         if(validationCheck) {
+            log.info("Tracking Id: {} - Validation successfully for customer data", trackingId);
             return "success";
         }else {
+            log.error("Tracking Id: {} - Validation failed for customer data , failed validations :{}", trackingId,exceptionMessage);
             return exceptionMessage;
         }
     }
@@ -77,8 +99,13 @@ public class Validations {
         return gender != null && (gender.equals("Male")|| gender.equals("Female"));
     }
 
-    public static boolean isValidUserName(String username) {
+    public static boolean isValidUserNameLength(String username) {
         return username != null && username.length() >= 8 && username.length() <= 15;
+    }
+
+    public static boolean isUniqueUsername(String username){
+      List<String> uniqueUsername = customerRepository.findAll().stream().map(Customer::getUsername).toList();
+        return !uniqueUsername.contains(username);
     }
 
     public static boolean isValidPassword(String password) {

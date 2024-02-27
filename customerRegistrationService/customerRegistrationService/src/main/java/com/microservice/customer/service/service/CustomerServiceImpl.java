@@ -31,21 +31,27 @@ public class CustomerServiceImpl implements CustomerService {
     Logger log = LoggerFactory.getLogger(CustomerServiceImpl.class);
 
     @Override
-    public Customer addCustomer(Customer customer) {
-        customer.setCustomerId(UUID.randomUUID().toString());
-        String result = Validations.validateCustomer(customer);
+    public Customer addCustomer(Customer customer , String trackingId) {
+
+        String result = Validations.validateCustomer(customer,trackingId);
+
         if(!result.equals("success")) {
             throw new RegistrationUnsuccessfullException(result);
         }
         // encrypting password.
         BCryptPasswordEncoder bcrypt = new BCryptPasswordEncoder();
 
+        customer.setCustomerId(UUID.randomUUID().toString());
         customer.setPassword(bcrypt.encode(customer.getPassword()));
+
+        log.info("Tracking Id: {} - encrypting password & setting cust Id and saving the customer in DB", trackingId);
+
         return customerRegistrationRepository.save(customer);
     }
 
     @Override
-    public Customer getCustomerById(String id) {
+    public Customer getCustomerById(String id , String trackingId) {
+        log.info("Tracking Id: {} - fetching customer through customer Id :{}", trackingId,id);
         return customerRegistrationRepository.findById(id).orElseThrow(ResourceNotFoundException::new);
     }
 
@@ -75,20 +81,7 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public String toggleAccountCreationBoolean(String customerId) {
-        Customer customer = getCustomerById(customerId);
-        customer.setAccountCreated(!customer.getAccountCreated());
-        customerRegistrationRepository.save(customer);
-        return "success";
-    }
-
-    @Override
     public Customer getByUsername(String username) {
-        if(!(customerRegistrationRepository.findByUsername(username).isEmpty())) {
-            return customerRegistrationRepository.findByUsername(username).get(0);
-        }
-        else {
-            return null;
-        }
+        return customerRegistrationRepository.findByUsername(username);
     }
 }

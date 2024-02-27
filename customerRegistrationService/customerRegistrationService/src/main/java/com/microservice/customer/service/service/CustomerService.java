@@ -7,11 +7,10 @@ import org.springframework.stereotype.Service;
 
 @Service
 public interface CustomerService {
-    Customer addCustomer(Customer customer);
-    Customer getCustomerById(String id);
+    Customer addCustomer(Customer customer , String trackingId);
+    Customer getCustomerById(String id , String trackingId);
     List<Customer> getAllCustomers();
     Customer updateCustomerById(String id,Customer customer);
     void deleteCustomerById(String id);
-    String toggleAccountCreationBoolean(String customerId);
     Customer getByUsername(String username);
 }
