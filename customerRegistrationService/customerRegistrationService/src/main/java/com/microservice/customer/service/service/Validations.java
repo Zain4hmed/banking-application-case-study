@@ -53,10 +53,10 @@ public class Validations {
             validationCheck = false;
             exceptionMessage += "username should not be null and should be between 8 and 15 characters long | ";
         }
-        if(!isUniqueUsername(customer.getUsername())){
-            validationCheck = false;
-            exceptionMessage += "username already exists please try with a different username | ";
-        }
+//        if(!isUniqueUsername(customer.getUsername())){
+//            validationCheck = false;
+//            exceptionMessage += "username already exists please try with a different username | ";
+//        }
         if(!isValidPassword(customer.getPassword())) {
             validationCheck = false;
             exceptionMessage += "password should not be null and should be between 8 and 15 characters long | ";

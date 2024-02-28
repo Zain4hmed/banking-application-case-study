@@ -40,9 +40,7 @@ public class CustomerServiceImpl implements CustomerService {
         BCryptPasswordEncoder bcrypt = new BCryptPasswordEncoder();
         customer.setCustomerId(UUID.randomUUID().toString());
         customer.setPassword(bcrypt.encode(customer.getPassword()));
-
         log.info("Tracking Id: {} - encrypting password & setting cust Id and saving the customer in DB", trackingId);
-
         customerRegistrationRepository.save(customer);
         return new ResponseDTO(customer,trackingId);
     }
