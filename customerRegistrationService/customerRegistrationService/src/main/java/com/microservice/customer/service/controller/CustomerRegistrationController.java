@@ -4,6 +4,7 @@ import com.google.zxing.BarcodeFormat;
 import com.google.zxing.WriterException;
 import com.google.zxing.common.BitMatrix;
 import com.google.zxing.qrcode.QRCodeWriter;
+import com.microservice.customer.service.DTO.ResponseDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -42,14 +43,14 @@ public class CustomerRegistrationController {
     private static final String GITHUB_URL = "https://github.com/ZainAhmed08/banking-application-case-study";
 
     @PostMapping("/register")
-    public ResponseEntity<Customer> registerCustomer(@RequestBody Customer customer){
+    public ResponseEntity<ResponseDTO> registerCustomer(@RequestBody Customer customer){
         String trackingId = UUID.randomUUID().toString();
         log.info("Tracking Id :{} request to create new customer",trackingId);
         return ResponseEntity.ok().body(customerService.addCustomer(customer , trackingId));
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Customer> getCustomerById(@PathVariable String id){
+    public ResponseEntity<ResponseDTO> getCustomerById(@PathVariable String id){
         String trackingId = UUID.randomUUID().toString();
         log.info("Tracking Id :{} request to get customer by customer Id :{}",trackingId,id);
         return ResponseEntity.ok().body(customerService.getCustomerById(id,trackingId));
@@ -83,12 +84,13 @@ public class CustomerRegistrationController {
         customerService.deleteCustomerById(id);
     }
 
+    // mostly un-necessary but mostly usefull endpoints below.
     @GetMapping(value = "/qrcode", produces = MediaType.IMAGE_PNG_VALUE)
     public ResponseEntity<byte[]> generateQRCode() {
         try {
             // Generate QR code
             QRCodeWriter qrCodeWriter = new QRCodeWriter();
-            BitMatrix bitMatrix = qrCodeWriter.encode(GITHUB_URL, BarcodeFormat.QR_CODE, 200, 200);
+            BitMatrix bitMatrix = qrCodeWriter.encode(GITHUB_URL, BarcodeFormat.QR_CODE, 500, 500);
 
             // Convert QR code to byte array
             ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
