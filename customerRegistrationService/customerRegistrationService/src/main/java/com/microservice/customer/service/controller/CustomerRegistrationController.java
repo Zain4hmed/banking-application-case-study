@@ -6,6 +6,8 @@ import com.google.zxing.common.BitMatrix;
 import com.google.zxing.qrcode.QRCodeWriter;
 import com.microservice.customer.service.DTO.ResponseDTO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -46,7 +48,7 @@ public class CustomerRegistrationController {
     public ResponseEntity<ResponseDTO> registerCustomer(@RequestBody Customer customer){
         String trackingId = UUID.randomUUID().toString();
         log.info("Tracking Id :{} request to create new customer",trackingId);
-        return ResponseEntity.ok().body(customerService.addCustomer(customer , trackingId));
+        return  ResponseEntity.status(HttpStatus.CREATED).body(customerService.addCustomer(customer,trackingId));
     }
 
     @GetMapping("/{id}")
@@ -64,7 +66,7 @@ public class CustomerRegistrationController {
     }
 
     @GetMapping("/all")
-    public ResponseEntity<List<Customer>> getAllCustomers(){
+    public ResponseEntity<List<ResponseDTO>> getAllCustomers(){
         String trackingId = UUID.randomUUID().toString();
         log.info("Tracking Id :{} request to get all customers from DB",trackingId);
         return ResponseEntity.ok().body(customerService.getAllCustomers(trackingId));
@@ -90,7 +92,7 @@ public class CustomerRegistrationController {
         try {
             // Generate QR code
             QRCodeWriter qrCodeWriter = new QRCodeWriter();
-            BitMatrix bitMatrix = qrCodeWriter.encode(GITHUB_URL, BarcodeFormat.QR_CODE, 500, 500);
+            BitMatrix bitMatrix = qrCodeWriter.encode(GITHUB_URL, BarcodeFormat.QR_CODE, 250, 250);
 
             // Convert QR code to byte array
             ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();

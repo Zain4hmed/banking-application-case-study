@@ -15,6 +15,7 @@ import org.slf4j.Logger;
 
 import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 @Service
 public class CustomerServiceImpl implements CustomerService {
@@ -53,9 +54,10 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public List<Customer> getAllCustomers(String trackingId) {
+    public List<ResponseDTO> getAllCustomers(String trackingId) {
         log.info("Tracking Id: {} - fetching all the customer from DB", trackingId);
-        return customerRegistrationRepository.findAll();
+        return customerRegistrationRepository.findAll().stream()
+                .map(customer -> new ResponseDTO(customer, "[ * * * * ]")).collect(Collectors.toList());
     }
 
     @Override
